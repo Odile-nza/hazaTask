@@ -41,7 +41,8 @@ catch(err){
      export const updatePatient=async(req,res)=>{
         try{
             const Patient=await patientInfos.findByIdAndUpdate(req.params.id,req.body,{
-                new:true
+                new:true,
+                runValidator:true
             })
             res.status(200).json({
                 success:true,
@@ -62,7 +63,7 @@ catch(err){
             const Patient=await patientInfos.findByIdAndRemove (req.params.id);
             res.status(200).json({
                 success:true,
-                data: Patient
+                data:{}
             })
             }
              catch(err){
